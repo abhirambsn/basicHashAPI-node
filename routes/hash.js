@@ -4,7 +4,7 @@ const crypto = require('crypto')
 
 
 router.get('/', (req, res) => {
-    res.send("Please send a POST request to /dohash with string and method to hash");
+    res.send("Please send a POST request to /dohash with string and method to hash", 200);
 })
 
 router.post('/', (req, res) => {
@@ -16,11 +16,11 @@ router.post('/', (req, res) => {
         var hashed = hashr.update(originalData).digest('hex')
         res.send({
             hash: hashed
-        })
+        }, 200)
     } catch (e) {
         res.send({
             error: "Invalid Hash Type, please try again"
-        })
+        }, 400)
     }
 })
 

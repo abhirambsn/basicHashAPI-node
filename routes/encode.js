@@ -23,15 +23,13 @@ router.post('/', (req, res) => {
             encoded = b58.encode(Buffer.from(originalData, "utf-8"))
         }
         res.send({
-            original: originalData,
-            encoding: method,
             encoded: encoded
-        })
+        }, 200)
     } catch (e) {
         console.log(e)
         res.send({
             error: "Invalid Encoding"
-        })
+        }, 400)
     }
     
 })

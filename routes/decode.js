@@ -23,14 +23,12 @@ router.post('/', (req, res) => {
             decoded = String.fromCharCode.apply(null, b58.decode(encodedData))
         }
         res.send({
-            encoded: encodedData,
-            encoding: method,
             decoded: decoded
-        })
+        }, 200)
     } catch (e) {
         res.send({
             error: "Invalid Encoding"
-        })
+        }, 400)
     }
     
 })
